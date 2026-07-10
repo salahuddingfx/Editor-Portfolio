@@ -25,6 +25,24 @@ export default function ProjectCard({ project, className = "" }) {
     }
   };
 
+  const getAspectClass = () => {
+    if (project.aspectRatio) return project.aspectRatio;
+    switch (project.category) {
+      case "Reels & Shorts":
+        return "aspect-[9/16] max-w-[320px] mx-auto";
+      case "Brand Identity":
+      case "Graphic Design":
+        return "aspect-[3/4]";
+      case "Social Media Design":
+        return "aspect-square";
+      case "Video Editing":
+      case "YouTube":
+      case "Motion Graphics":
+      default:
+        return "aspect-video";
+    }
+  };
+
   const cursorLabel = project.category === "Video Editing" || project.category === "Reels & Shorts" || project.category === "YouTube" ? "PLAY" : "VIEW";
 
   return (
@@ -33,10 +51,10 @@ export default function ProjectCard({ project, className = "" }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       data-cursor={cursorLabel}
-      className={`group block relative w-full overflow-hidden bg-secondary-bg border border-default-border hover:border-primary-accent/40 transition-colors duration-500 ${className}`}
+      className={`group block relative w-full overflow-hidden bg-[#111111] border border-default-border hover:border-primary-accent/40 transition-colors duration-500 ${className}`}
     >
       {/* Visual media wrapper */}
-      <div className="relative w-full h-full overflow-hidden aspect-video">
+      <div className={`relative w-full overflow-hidden ${getAspectClass()}`}>
         
         {/* Placeholder image (lazy loaded) */}
         <img
