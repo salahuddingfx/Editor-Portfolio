@@ -47,6 +47,7 @@ export default function AboutPreview() {
               <motion.img 
                 src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
                 alt="Creative editing workspace"
+                loading="lazy"
                 className="w-full h-[120%] object-cover absolute top-0 left-0"
                 style={{ y: isReduced ? 0 : y }}
               />

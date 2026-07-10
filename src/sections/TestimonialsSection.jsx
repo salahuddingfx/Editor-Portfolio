@@ -84,6 +84,7 @@ export default function TestimonialsSection() {
                   <img 
                     src={current.image} 
                     alt={current.name} 
+                    loading="lazy"
                     className="w-12 h-12 rounded-full object-cover border border-default-border/60"
                   />
                 )}

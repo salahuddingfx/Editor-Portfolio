@@ -321,6 +321,7 @@ export default function ProjectDetails() {
               <img 
                 src={fullscreenImage} 
                 alt="Fullscreen Preview Frame" 
+                loading="lazy"
                 className="w-full h-full object-contain max-h-[85vh]"
               />
             </motion.div>

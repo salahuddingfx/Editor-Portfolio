@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Work from "./pages/Work";
-import ProjectDetails from "./pages/ProjectDetails";
-import Services from "./pages/Services";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+
+// Lazy Loaded Pages
+const Home = lazy(() => import("./pages/Home"));
+const Work = lazy(() => import("./pages/Work"));
+const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
+const Services = lazy(() => import("./pages/Services"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Developer = lazy(() => import("./pages/Developer"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
 import CustomCursor from "./components/CustomCursor";
 import IntroLoader from "./components/IntroLoader";
 import VideoModal from "./components/VideoModal";
@@ -18,6 +22,18 @@ import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import { siteConfig } from "./config/siteConfig";
+
+// Premium loader fallback matching editing track theme
+function PageLoader() {
+  return (
+    <div className="w-full min-h-[60vh] bg-[#080808] flex flex-col items-center justify-center gap-4 select-none">
+      <div className="w-8 h-8 border-2 border-primary-accent border-t-transparent rounded-full animate-spin" />
+      <span className="font-mono text-[10px] text-muted-text tracking-widest uppercase animate-pulse">
+        LOADING TRACK...
+      </span>
+    </div>
+  );
+}
 
 function AppContent() {
   const location = useLocation();
@@ -85,15 +101,18 @@ function AppContent() {
         
         {/* Route transition wrappers */}
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home onPlayShowreel={() => setIsShowreelOpen(true)} />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/work/:slug" element={<ProjectDetails />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home onPlayShowreel={() => setIsShowreelOpen(true)} />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/work/:slug" element={<ProjectDetails />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/developer" element={<Developer />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
 
         <Footer />

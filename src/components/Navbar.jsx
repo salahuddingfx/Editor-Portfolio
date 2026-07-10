@@ -7,9 +7,7 @@ import { siteConfig } from "../config/siteConfig";
 
 export default function Navbar({ onPlayShowreel }) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,19 +20,11 @@ export default function Navbar({ onPlayShowreel }) {
       } else {
         setIsScrolled(false);
       }
-
-      // Hide navbar when scrolling down, reveal when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Lock scrolling when mobile menu is open
   useEffect(() => {
@@ -79,7 +69,7 @@ export default function Navbar({ onPlayShowreel }) {
           isScrolled 
             ? "bg-secondary-bg/90 backdrop-blur-md border-b border-default-border/50 py-3 md:py-4" 
             : "bg-transparent py-5 md:py-8"
-        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+        }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between">
           {/* Logo */}

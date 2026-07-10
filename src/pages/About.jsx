@@ -51,6 +51,7 @@ export default function About() {
                 <img 
                   src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" 
                   alt="Alexander Vance studio workstation" 
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

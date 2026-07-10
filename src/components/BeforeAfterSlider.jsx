@@ -36,6 +36,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel
       <img
         src={beforeImage}
         alt="Raw grading state"
+        loading="lazy"
         className="absolute inset-0 w-full h-full object-cover"
         draggable="false"
       />
@@ -51,6 +52,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel
         <img
           src={afterImage}
           alt="Graded cinematic state"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
           draggable="false"
         />
