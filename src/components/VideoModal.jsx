@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { getDriveEmbedUrl, isGoogleDriveLink } from "../utils/driveUtils";
 
 export default function VideoModal({ isOpen, onClose, videoUrl }) {
   const modalRef = useRef(null);
@@ -60,7 +61,11 @@ export default function VideoModal({ isOpen, onClose, videoUrl }) {
 
   if (!isOpen) return null;
 
-  const isEmbed = videoUrl.includes("youtube.com") || videoUrl.includes("vimeo.com") || videoUrl.includes("embed") || videoUrl.includes("player.vimeo");
+  const isEmbed = videoUrl.includes("youtube.com") || videoUrl.includes("vimeo.com") || videoUrl.includes("embed") || videoUrl.includes("player.vimeo") || isGoogleDriveLink(videoUrl);
+
+  const embedUrl = isGoogleDriveLink(videoUrl)
+    ? getDriveEmbedUrl(videoUrl)
+    : `${videoUrl}${videoUrl.includes("?") ? "&" : "?"}autoplay=1`;
 
   return (
     <AnimatePresence>
@@ -98,7 +103,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }) {
           <div className="w-full h-full flex items-center justify-center">
             {isEmbed ? (
               <iframe
-                src={`${videoUrl}${videoUrl.includes("?") ? "&" : "?"}autoplay=1`}
+                src={embedUrl}
                 title="Cinematic Player"
                 className="w-full h-full border-none"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
