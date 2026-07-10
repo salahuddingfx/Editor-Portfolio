@@ -6,6 +6,7 @@ import PageTransition from "../components/PageTransition";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import MagneticButton from "../components/MagneticButton";
 import { projects } from "../data/projects";
+import { getDriveEmbedUrl, getDriveImageUrl } from "../utils/driveUtils";
 
 export default function ProjectDetails() {
   const { slug } = useParams();
@@ -74,7 +75,7 @@ export default function ProjectDetails() {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 mt-8 md:mt-12">
           <div className="relative w-full aspect-video border border-default-border overflow-hidden bg-secondary-bg">
             <iframe
-              src={project.finalVideo}
+              src={getDriveEmbedUrl(project.finalVideo)}
               title={`${project.title} Final Edit`}
               className="w-full h-full border-none"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -219,7 +220,7 @@ export default function ProjectDetails() {
                   className="relative group aspect-video cursor-zoom-in overflow-hidden border border-default-border bg-secondary-bg hover:border-primary-accent/40 transition-colors"
                 >
                   <img
-                    src={imgUrl}
+                    src={getDriveImageUrl(imgUrl)}
                     alt={`${project.title} Asset Frame ${idx + 1}`}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
@@ -319,7 +320,7 @@ export default function ProjectDetails() {
                 <X size={16} />
               </button>
               <img 
-                src={fullscreenImage} 
+                src={getDriveImageUrl(fullscreenImage)} 
                 alt="Fullscreen Preview Frame" 
                 loading="lazy"
                 className="w-full h-full object-contain max-h-[85vh]"
