@@ -48,6 +48,18 @@ export default function HeroSection({ onPlayShowreel }) {
     setMousePos({ x, y });
   };
 
+  // Click handler to smooth scroll down exactly one viewport height
+  const handleScrollDown = () => {
+    if (window.lenis) {
+      window.lenis.scrollTo(window.innerHeight, { duration: 1.2 });
+    } else {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section
       ref={heroRef}
@@ -171,16 +183,42 @@ export default function HeroSection({ onPlayShowreel }) {
       </div>
 
       {/* Bottom Row */}
-      <div className="max-w-[1600px] w-full mx-auto px-6 md:px-12 lg:px-16 flex justify-between items-center z-10">
-        {/* Aspect Ratio Guide */}
-        <div className="font-mono text-[9px] text-muted-text uppercase tracking-widest">
+      <div className="max-w-[1600px] w-full mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-3 items-center z-10">
+        {/* Aspect Ratio Guide (Left) */}
+        <div className="font-mono text-[9px] text-muted-text uppercase tracking-widest text-left">
           ASPECT 16:9 / FRAME 24FPS / 4K DCI
         </div>
         
-        {/* Scroll down prompt */}
-        <div className="flex items-center gap-2 font-mono text-[9px] text-muted-text uppercase tracking-widest animate-bounce">
-          <span>SCROLL FOR TRACK</span>
-          <ArrowDown size={10} />
+        {/* Interactive Mouse Scroll Indicator (Center) */}
+        <div className="flex flex-col items-center justify-center">
+          <button
+            onClick={handleScrollDown}
+            className="group focus:outline-none flex flex-col items-center gap-2 cursor-pointer"
+            aria-label="Scroll down one track"
+          >
+            <div className="w-5 h-8 border border-muted-text/60 rounded-full flex justify-center p-1 hover:border-primary-accent hover:shadow-[0_0_8px_rgba(255,77,36,0.25)] transition-all duration-300">
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                  opacity: [1, 0.4, 1]
+                }}
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-1 h-2 bg-primary-accent rounded-full"
+              />
+            </div>
+            <span className="font-mono text-[8px] text-muted-text uppercase tracking-widest group-hover:text-primary-accent transition-colors duration-300">
+              SCROLL FOR TRACK
+            </span>
+          </button>
+        </div>
+
+        {/* Color Profile / Frame Rate readouts (Right) */}
+        <div className="font-mono text-[9px] text-muted-text uppercase tracking-widest text-right hidden sm:block">
+          LUT C-LOG3 / REC709
         </div>
       </div>
     </section>
