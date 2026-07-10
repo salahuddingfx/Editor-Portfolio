@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUp } from "lucide-react";
 import { siteConfig } from "../config/siteConfig";
 
 export default function Footer() {
