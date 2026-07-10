@@ -78,10 +78,10 @@ export default function CreativeProcess() {
           {steps.map((step, idx) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-15%" }}
-              transition={{ duration: 0.6, delay: isReduced ? 0 : idx * 0.05 }}
+              initial={{ opacity: 0, y: 40, x: -20 }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              viewport={{ once: false, margin: "-15%" }}
+              transition={{ duration: 0.55, ease: "easeInOut" }}
               className="relative flex flex-col gap-2 text-left group"
             >
               {/* Outer Indicator Circle */}
