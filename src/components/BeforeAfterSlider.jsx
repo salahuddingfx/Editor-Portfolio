@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { getDriveImageUrl } from "../utils/driveUtils";
 
 export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel = "LOG PROFILE", afterLabel = "FINAL COLOR" }) {
   const [sliderPosition, setSliderPosition] = useState(50); // percentage 0-100
@@ -19,10 +20,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel
   };
 
   const handleMouseMove = (e) => {
-    // Only move if dragging (e.buttons === 1 represents left mouse clicked)
-    if (e.buttons === 1) {
-      handleMove(e.clientX);
-    }
+    handleMove(e.clientX);
   };
 
   return (
@@ -34,7 +32,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel
     >
       {/* Before Image (RAW - Underneath) */}
       <img
-        src={beforeImage}
+        src={getDriveImageUrl(beforeImage)}
         alt="Raw grading state"
         loading="lazy"
         className="absolute inset-0 w-full h-full object-cover"
@@ -50,7 +48,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel
         style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
       >
         <img
-          src={afterImage}
+          src={getDriveImageUrl(afterImage)}
           alt="Graded cinematic state"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
