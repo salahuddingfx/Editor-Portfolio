@@ -184,7 +184,7 @@ export default function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
-                <span className="font-mono text-[10px] text-primary-accent font-bold">🏆 FESTIVAL HONOR</span>
+                <span className="font-mono text-[10px] text-primary-accent font-bold">// FESTIVAL HONOR</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Best Commercial Edit (2025)
                 </h3>
@@ -194,7 +194,7 @@ export default function About() {
               </div>
 
               <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
-                <span className="font-mono text-[10px] text-primary-accent font-bold">📈 RETENTION RECORD</span>
+                <span className="font-mono text-[10px] text-primary-accent font-bold">// RETENTION RECORD</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   10 Million+ Viewer Engagement
                 </h3>
@@ -204,7 +204,7 @@ export default function About() {
               </div>
 
               <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
-                <span className="font-mono text-[10px] text-primary-accent font-bold">⚡ BRAND DESIGN COLLAB</span>
+                <span className="font-mono text-[10px] text-primary-accent font-bold">// BRAND DESIGN COLLAB</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Vanguard Car Launch Visuals
                 </h3>
@@ -214,7 +214,7 @@ export default function About() {
               </div>
 
               <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
-                <span className="font-mono text-[10px] text-primary-accent font-bold">🎓 EXPERT ACCREDITATION</span>
+                <span className="font-mono text-[10px] text-primary-accent font-bold">// EXPERT ACCREDITATION</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Certified DaVinci Color Specialist
                 </h3>
