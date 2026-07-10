@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Tasnimul Rahat",
-  title: "Tasnimul Rahat | Premium Video Editor & Visual Designer",
+  title: "Tasnimul Rahat - Premium Video Editor & Visual Designer",
   subtitle: "Video Editor & Visual Designer",
   description: "Crafting premium visual stories, cinematic commercials, and high-impact motion designs for global brands.",
   email: "tasnimulrahat@gmail.com",
