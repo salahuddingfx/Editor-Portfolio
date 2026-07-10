@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Clapperboard, Layers, Palette, Image, PenTool, LayoutGrid, Download, Briefcase, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import MagneticButton from "../components/MagneticButton";
 import { siteConfig } from "../config/siteConfig";
@@ -144,8 +145,12 @@ export default function About() {
 
             <div className="flex flex-col gap-6">
               {experience.map((job) => (
-                <div
+                <motion.div
                   key={job.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: "-10%" }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="group bg-[#111111] border border-default-border/60 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-12 justify-between items-start hover:border-default-border transition-colors duration-300"
                 >
                   {/* Left Column Year & Role */}
@@ -168,7 +173,7 @@ export default function About() {
                       {job.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -183,7 +188,13 @@ export default function About() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-10%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3"
+              >
                 <span className="font-mono text-[10px] text-primary-accent font-bold">// FESTIVAL HONOR</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Best Commercial Edit (2025)
@@ -191,9 +202,15 @@ export default function About() {
                 <p className="font-inter text-xs text-secondary-text leading-relaxed">
                   Awarded by the NYC Design Film Festival for the edit and visual pacing on the Aurora Haute Couture Campaign.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-10%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3"
+              >
                 <span className="font-mono text-[10px] text-primary-accent font-bold">// RETENTION RECORD</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   10 Million+ Viewer Engagement
@@ -201,9 +218,15 @@ export default function About() {
                 <p className="font-inter text-xs text-secondary-text leading-relaxed">
                   Generated across TikTok, Reels, and YT Shorts platforms for independent creators and commercial digital channels in 2025.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-10%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3"
+              >
                 <span className="font-mono text-[10px] text-primary-accent font-bold">// BRAND DESIGN COLLAB</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Vanguard Car Launch Visuals
@@ -211,9 +234,15 @@ export default function About() {
                 <p className="font-inter text-xs text-secondary-text leading-relaxed">
                   Crafted custom 3D telemetry panels and telemetry motion designs for the Vanguard Electric Supercar world debut in Munich.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-10%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="bg-[#111111] border border-default-border/60 p-6 flex flex-col gap-3"
+              >
                 <span className="font-mono text-[10px] text-primary-accent font-bold">// EXPERT ACCREDITATION</span>
                 <h3 className="font-space text-base font-bold text-[#F5F3EE] uppercase">
                   Certified DaVinci Color Specialist
@@ -221,7 +250,7 @@ export default function About() {
                 <p className="font-inter text-xs text-secondary-text leading-relaxed">
                   Accredited colorist specializing in HDR grading, raw log matching, film-grain composition, and Kodak film emulations.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
 
