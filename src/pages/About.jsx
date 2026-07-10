@@ -40,7 +40,7 @@ export default function About() {
                 THE STORYTELLER
               </span>
               <h1 className="font-space text-4xl md:text-6xl font-bold uppercase text-[#F5F3EE] tracking-tight leading-none">
-                Alexander Vance
+                Tasnimul Rahat
               </h1>
               <span className="font-mono text-xs text-muted-text uppercase tracking-widest mt-1">
                 Video Editor // Designer // Storyteller
@@ -50,7 +50,7 @@ export default function About() {
               <div className="w-full aspect-[4/3] md:aspect-video border border-default-border overflow-hidden bg-secondary-bg mt-6">
                 <img 
                   src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" 
-                  alt="Alexander Vance studio workstation" 
+                  alt="Tasnimul Rahat studio workstation" 
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
@@ -78,7 +78,7 @@ export default function About() {
               {/* Resume download button if configured */}
               {resumeConfigured && (
                 <div className="mt-4">
-                  <a href={resumeConfigured} download="Alexander_Vance_Resume.pdf">
+                  <a href={resumeConfigured} download="Tasnimul_Rahat_Resume.pdf">
                     <MagneticButton className="px-6 py-3 border border-default-border hover:border-primary-accent hover:text-primary-accent font-inter text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-2">
                       <Download size={14} />
                       DOWNLOAD RÉSUMÉ

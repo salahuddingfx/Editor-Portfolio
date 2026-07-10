@@ -1,19 +1,19 @@
 export const siteConfig = {
-  name: "Alexander Vance",
-  title: "Alexander Vance | Premium Video Editor & Visual Designer",
+  name: "Tasnimul Rahat",
+  title: "Tasnimul Rahat | Premium Video Editor & Visual Designer",
   subtitle: "Video Editor & Visual Designer",
   description: "Crafting premium visual stories, cinematic commercials, and high-impact motion designs for global brands.",
-  email: "alexander@vancecreative.studio",
-  phone: "+1 (555) 349-2049",
-  whatsapp: "https://wa.me/15553492049",
-  location: "New York, NY",
+  email: "tasnimulrahat@gmail.com",
+  phone: "+880 1851-075537", // Using provided WhatsApp contact
+  whatsapp: "https://wa.me/8801851075537",
+  location: "Dhaka, Bangladesh",
   availableForWork: true,
   showreelUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder showreel video
   socials: {
-    instagram: "https://instagram.com/vance.editor",
-    behance: "https://behance.net/vancecreative",
-    linkedin: "https://linkedin.com/in/alexander-vance",
-    youtube: "https://youtube.com/c/vancecreative",
+    instagram: "https://instagram.com/tasnimulrahat",
+    behance: "https://behance.net/tasnimulrahat",
+    linkedin: "https://linkedin.com/in/tasnimulrahat",
+    youtube: "https://youtube.com/c/tasnimulrahat",
   },
   budgets: [
     { label: "$1,500 - $3,000", value: "1.5k-3k" },

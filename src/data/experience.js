@@ -3,7 +3,7 @@ export const experience = [
     id: 1,
     year: "2024 - PRESENT",
     role: "Senior Video Editor & Motion Designer",
-    company: "Vance Creative Studio",
+    company: "Rahat Creative Studio",
     description: "Operating a private boutique post-production service. Editing high-end campaigns, commercials, and social broadcast packages for international tech and luxury brands."
   },
   {

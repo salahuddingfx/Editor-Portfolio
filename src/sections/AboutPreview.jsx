@@ -66,7 +66,7 @@ export default function AboutPreview() {
             
             <div className="flex flex-col gap-4 text-secondary-text max-w-xl font-inter text-sm md:text-base leading-relaxed">
               <p>
-                My name is Alexander Vance. Over the last three years, I’ve worked with commercial agencies, production studios, and digital content creators to translate complex narratives into seamless kinetic sequences.
+                My name is Tasnimul Rahat. Over the last three years, I’ve worked with commercial agencies, production studios, and digital content creators to translate complex narratives into seamless kinetic sequences.
               </p>
               <p>
                 Whether it's editing a cinematic high-fashion promo video, designing 3D motion hud graphics, or cutting high-retention short-form content, I bridge the gap between creative storytelling and technical execution.

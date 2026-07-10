@@ -75,7 +75,7 @@ export default function Navbar({ onPlayShowreel }) {
           {/* Logo */}
           <Link to="/" className="font-space text-lg font-bold tracking-widest text-[#F5F3EE] hover:text-primary-accent transition-colors flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary-accent" />
-            VANCE
+            RAHAT
           </Link>
 
           {/* Desktop Nav Links */}
