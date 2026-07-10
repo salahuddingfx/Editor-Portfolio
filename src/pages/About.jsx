@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Clapperboard, Layers, Palette, Image, PenTool, LayoutGrid, Download, Briefcase, Calendar } from "lucide-react";
+import { Clapperboard, Layers, Palette, Image, PenTool, LayoutGrid, Download, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import MagneticButton from "../components/MagneticButton";
