@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Play, ArrowDown } from "lucide-react";
+import { Play } from "lucide-react";
 import { motion } from "framer-motion";
 import MagneticButton from "../components/MagneticButton";
-import { siteConfig } from "../config/siteConfig";
 
 export default function HeroSection({ onPlayShowreel }) {
   const [timecode, setTimecode] = useState("00:01:24:18");
