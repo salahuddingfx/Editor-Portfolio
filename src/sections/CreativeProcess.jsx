@@ -75,7 +75,7 @@ export default function CreativeProcess() {
           )}
 
           {/* Steps */}
-          {steps.map((step, idx) => (
+          {steps.map((step) => (
             <motion.div
               key={step.num}
               initial={{ opacity: 0, y: 40, x: -20 }}
