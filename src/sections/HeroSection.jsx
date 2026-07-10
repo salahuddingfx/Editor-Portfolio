@@ -88,12 +88,6 @@ export default function HeroSection({ onPlayShowreel }) {
       {/* Decorative Shutter/Viewfinder Frame Lines */}
       <div className="absolute top-12 left-6 right-6 h-[1px] bg-default-border/30 pointer-events-none" />
       <div className="absolute bottom-12 left-6 right-6 h-[1px] bg-default-border/30 pointer-events-none" />
-      
-      {/* Camera Viewfinder Corners (Bespoke Cinema Look) */}
-      <div className="absolute top-16 left-10 w-4 h-4 border-t border-l border-default-border/55 pointer-events-none" />
-      <div className="absolute top-16 right-10 w-4 h-4 border-t border-r border-default-border/55 pointer-events-none" />
-      <div className="absolute bottom-16 left-10 w-4 h-4 border-b border-l border-default-border/55 pointer-events-none" />
-      <div className="absolute bottom-16 right-10 w-4 h-4 border-b border-r border-default-border/55 pointer-events-none" />
 
       {/* Top Details Column */}
       <div className="max-w-[1600px] w-full mx-auto px-6 md:px-12 lg:px-16 flex justify-between items-start z-10">
