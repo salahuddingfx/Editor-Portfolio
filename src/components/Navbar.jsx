@@ -129,10 +129,20 @@ export default function Navbar({ onPlayShowreel }) {
             {/* Mobile Burger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-primary-text hover:text-primary-accent transition-colors focus:outline-none"
+              className="lg:hidden p-2.5 text-primary-text hover:text-primary-accent transition-colors focus:outline-none flex items-center justify-center"
               aria-label="Toggle Navigation Menu"
             >
-              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              <div className="w-5 h-4 relative flex items-center justify-center">
+                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
+                  isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"
+                }`} />
+                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-0 scale-x-0" : ""
+                }`} />
+                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
+                  isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"
+                }`} />
+              </div>
             </button>
           </div>
         </div>
