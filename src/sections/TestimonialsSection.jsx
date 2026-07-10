@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import { testimonials } from "../data/testimonials";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export default function TestimonialsSection() {
   const [index, setIndex] = useState(0);
