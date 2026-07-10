@@ -8,6 +8,7 @@ export const siteConfig = {
   whatsapp: "https://wa.me/8801851075537",
   location: "Dhaka, Bangladesh",
   availableForWork: true,
+  web3FormsKey: "YOUR_ACCESS_KEY_HERE", // Get your free access key from https://web3forms.com
   showreelUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder showreel video
   socials: {
     instagram: "https://instagram.com/tasnimulrahat",
