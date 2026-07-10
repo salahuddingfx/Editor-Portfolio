@@ -58,7 +58,7 @@ export default function Services() {
 
           {/* Detailed list blocks */}
           <div className="flex flex-col gap-8">
-            {services.map((service, idx) => (
+            {services.map((service) => (
               <div
                 key={service.id}
                 className="group w-full bg-[#111111] border border-default-border/60 hover:border-primary-accent/40 p-8 md:p-12 transition-all duration-300 flex flex-col lg:flex-row gap-8 lg:gap-16 justify-between items-start"
