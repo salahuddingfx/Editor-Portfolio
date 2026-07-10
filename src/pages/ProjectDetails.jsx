@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Play, Eye, Maximize2, X } from "lucide-react";
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
@@ -10,7 +10,6 @@ import { getDriveEmbedUrl, getDriveImageUrl } from "../utils/driveUtils";
 
 export default function ProjectDetails() {
   const { slug } = useParams();
-  const navigate = useNavigate();
   const [fullscreenImage, setFullscreenImage] = useState(null);
 
   // Find current, next, and previous projects
