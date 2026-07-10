@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import { testimonials } from "../data/testimonials";
@@ -7,7 +7,6 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 export default function TestimonialsSection() {
   const [index, setIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   // Autoplay intervals (paused on hover)
   useEffect(() => {
