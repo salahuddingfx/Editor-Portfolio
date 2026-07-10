@@ -18,10 +18,10 @@ export default function Footer() {
           <div className="md:col-span-6 flex flex-col gap-3">
             <Link to="/" className="font-space text-xl font-bold tracking-widest text-[#F5F3EE] flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-primary-accent" />
-              VANCE
+              RAHAT
             </Link>
             <p className="font-inter text-xs text-secondary-text tracking-widest uppercase max-w-xs leading-relaxed">
-              Video Editor & Visual Designer
+              Video Editor &amp; Visual Designer
             </p>
             {siteConfig.availableForWork && (
               <div className="flex items-center gap-2 mt-1">
@@ -65,7 +65,7 @@ export default function Footer() {
         {/* Footer Bottom Metadata */}
         <div className="border-t border-default-border/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
           <p className="font-mono text-[10px] text-muted-text">
-            © {new Date().getFullYear()} ALEXANDER VANCE. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} TASNIMUL RAHAT. ALL RIGHTS RESERVED.
           </p>
           <p className="font-mono text-[10px] text-muted-text tracking-wider uppercase">
             Developed by{" "}
