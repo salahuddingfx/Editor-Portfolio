@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { getDriveEmbedUrl, getDriveImageUrl, isGoogleDriveLink } from "../utils/driveUtils";
 
 export default function ProjectCard({ project, className = "" }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -58,7 +59,7 @@ export default function ProjectCard({ project, className = "" }) {
         
         {/* Placeholder image (lazy loaded) */}
         <img
-          src={project.thumbnail}
+          src={getDriveImageUrl(project.thumbnail)}
           alt={project.title}
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -66,16 +67,27 @@ export default function ProjectCard({ project, className = "" }) {
 
         {/* Hover preview video (loops, muted) */}
         {isDesktop && project.previewVideo && (
-          <video
-            ref={videoRef}
-            src={project.previewVideo}
-            muted
-            loop
-            playsInline
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-              isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          />
+          isGoogleDriveLink(project.previewVideo) ? (
+            <iframe
+              src={`${getDriveEmbedUrl(project.previewVideo)}?autoplay=1&mute=1&controls=0&loop=1`}
+              title={`${project.title} Preview`}
+              className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-500 border-none ${
+                isHovered ? "opacity-100" : "opacity-0"
+              }`}
+              allow="autoplay; encrypted-media"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              src={project.previewVideo}
+              muted
+              loop
+              playsInline
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            />
+          )
         )}
 
         {/* Darkening tint overlay */}
