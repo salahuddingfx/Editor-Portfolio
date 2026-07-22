@@ -28,9 +28,10 @@ export default function ProjectCard({ project, onQuickPlay, className = "" }) {
 
   const getAspectClass = () => {
     if (project.aspectRatio) return project.aspectRatio;
+    if (project.isVertical || project.category === "Reels & Shorts") {
+      return "aspect-[9/16] max-h-[340px] md:max-h-[380px] w-full mx-auto";
+    }
     switch (project.category) {
-      case "Reels & Shorts":
-        return "aspect-[9/16] max-w-[340px] mx-auto";
       case "Brand Identity":
       case "Graphic Design":
         return "aspect-[4/3]";
