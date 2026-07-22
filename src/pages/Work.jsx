@@ -79,13 +79,13 @@ export default function Work() {
             })}
           </div>
 
-          {/* Portfolio Grid with Breathing Room */}
+          {/* Portfolio Grid with 3-4 Cards per Row */}
           <div className="min-h-[400px]">
             <AnimatePresence mode="popLayout">
               {filteredProjects.length > 0 ? (
                 <motion.div 
                   layout
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 items-start"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start"
                 >
                   {filteredProjects.map((project) => (
                     <motion.div

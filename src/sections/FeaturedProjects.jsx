@@ -36,8 +36,8 @@ export default function FeaturedProjects() {
           </p>
         </div>
 
-        {/* Grid Container with Spacious Gaps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-14 items-start">
+        {/* Grid Container with 3-4 Cards per Row on Desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start">
           {featured.map((project) => (
             <ProjectCard
               key={project.id}
