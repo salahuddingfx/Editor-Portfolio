@@ -79,28 +79,80 @@ export default function Work() {
             })}
           </div>
 
-          {/* Portfolio Grid with 3-4 Cards per Row */}
+          {/* Portfolio Grid Layout */}
           <div className="min-h-[400px]">
             <AnimatePresence mode="popLayout">
               {filteredProjects.length > 0 ? (
-                <motion.div 
-                  layout
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start"
-                >
-                  {filteredProjects.map((project) => (
-                    <motion.div
-                      key={project.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      transition={{ duration: 0.35 }}
-                      className="w-full"
-                    >
-                      <ProjectCard project={project} onQuickPlay={handleQuickPlay} />
-                    </motion.div>
-                  ))}
-                </motion.div>
+                activeFilter === "ALL" ? (
+                  <div className="flex flex-col gap-16 md:gap-24">
+                    {/* 1. Cinematic & Landscape Work Section */}
+                    <div className="flex flex-col gap-8">
+                      <div className="border-b border-white/5 pb-4">
+                        <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
+                          // CINEMATIC & COMMERCIAL CUTS
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start">
+                        {filteredProjects.filter(p => !p.isVertical).map((project) => (
+                          <motion.div
+                            key={project.id}
+                            layout
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.96 }}
+                            transition={{ duration: 0.35 }}
+                            className="w-full"
+                          >
+                            <ProjectCard project={project} onQuickPlay={handleQuickPlay} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 2. Vertical Reels & Shorts Section */}
+                    <div className="flex flex-col gap-8">
+                      <div className="border-b border-white/5 pb-4">
+                        <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
+                          // SHORT-FORM, REELS & TIKTOK
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start">
+                        {filteredProjects.filter(p => p.isVertical).map((project) => (
+                          <motion.div
+                            key={project.id}
+                            layout
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.96 }}
+                            transition={{ duration: 0.35 }}
+                            className="w-full"
+                          >
+                            <ProjectCard project={project} onQuickPlay={handleQuickPlay} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <motion.div 
+                    layout
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 items-start"
+                  >
+                    {filteredProjects.map((project) => (
+                      <motion.div
+                        key={project.id}
+                        layout
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.96 }}
+                        transition={{ duration: 0.35 }}
+                        className="w-full"
+                      >
+                        <ProjectCard project={project} onQuickPlay={handleQuickPlay} />
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )
               ) : (
                 <div className="flex flex-col items-center justify-center py-20 text-center glass-card rounded-2xl p-12">
                   <span className="font-mono text-xs text-muted-text uppercase tracking-widest mb-2">
