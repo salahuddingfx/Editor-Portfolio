@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Video, Smartphone, Layers, Palette, Sparkles, ArrowUpRight } from "lucide-react";
 import { services } from "../data/services";
 
-// Custom SVG Youtube component (since Lucide v0.470+ removed brand icons)
+// Custom SVG Youtube component
 const Youtube = (props) => (
   <svg
     viewBox="0 0 24 24"
@@ -21,7 +21,6 @@ const Youtube = (props) => (
   </svg>
 );
 
-// Dynamic Icon Mapper
 const IconComponent = ({ name, ...props }) => {
   switch (name) {
     case "Video": return <Video {...props} />;
@@ -34,68 +33,62 @@ const IconComponent = ({ name, ...props }) => {
   }
 };
 
-
 export default function ServicesPreview() {
-  // Configured grid span mappings for bento layout on desktop
   const gridSpans = [
-    "lg:col-span-2", // Video Editing (wide)
-    "lg:col-span-1", // Reels & Shorts (standard)
-    "lg:col-span-1", // YouTube (standard)
-    "lg:col-span-2", // Motion Graphics (wide)
-    "lg:col-span-1", // Graphic Design (standard)
-    "lg:col-span-2", // Brand Identity (wide)
+    "lg:col-span-2",
+    "lg:col-span-1",
+    "lg:col-span-1",
+    "lg:col-span-2",
+    "lg:col-span-1",
+    "lg:col-span-2",
   ];
 
   return (
-    <section className="w-full bg-[#080808] py-20 md:py-32 border-t border-default-border/60">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-12 md:gap-16">
+    <section className="w-full bg-[#080808] py-24 md:py-36 border-t border-white/5 relative">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-14 md:gap-16">
         
         {/* Header Section */}
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <span className="font-mono text-[10px] text-primary-accent tracking-widest uppercase">
-            CREATIVE SERVICES
+        <div className="flex flex-col gap-2 max-w-xl">
+          <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
+            // WHAT I DO
           </span>
-          <h2 className="font-space text-3xl md:text-5xl font-bold uppercase text-[#F5F3EE]">
-            Bespoke Visual Solutions
+          <h2 className="font-space text-3xl md:text-5xl font-bold uppercase text-primary-text tracking-tight">
+            Services & Expertise
           </h2>
-          <p className="font-inter text-xs md:text-sm text-secondary-text mt-2 leading-relaxed">
-            Delivering cinematic polish and motion design tailored to make brands memorable, increase watch time, and optimize engagement.
+          <p className="font-inter text-xs md:text-sm text-secondary-text mt-1 leading-relaxed">
+            Tailored visual editing, motion design, and color grading designed for modern brands and creators.
           </p>
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, idx) => {
             const spanClass = gridSpans[idx] || "lg:col-span-1";
             return (
               <Link
                 key={service.id}
                 to="/services"
-                className={`group relative flex flex-col justify-between p-8 bg-[#111111] border border-default-border hover:border-primary-accent transition-all duration-500 overflow-hidden min-h-[280px] ${spanClass}`}
+                className={`group glass-card glass-card-hover p-8 md:p-10 rounded-2xl flex flex-col justify-between min-h-[260px] ${spanClass}`}
               >
-                {/* Visual texture overlay - subtle grid reveal on hover */}
-                <div className="absolute inset-0 grid-lines opacity-0 group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none" />
-
                 {/* Top row */}
-                <div className="flex justify-between items-start z-10">
+                <div className="flex justify-between items-start">
                   <span className="font-mono text-xs text-muted-text">
                     {service.id}
                   </span>
-                  <div className="text-secondary-text group-hover:text-primary-accent group-hover:rotate-12 transition-transform duration-500">
+                  <div className="text-secondary-text group-hover:text-primary-accent group-hover:scale-110 transition-all duration-300">
                     <IconComponent name={service.iconName} size={28} strokeWidth={1.2} />
                   </div>
                 </div>
 
                 {/* Bottom content info */}
-                <div className="flex flex-col gap-3 mt-12 z-10">
+                <div className="flex flex-col gap-2 mt-8">
                   <div className="flex justify-between items-center">
-                    <h3 className="font-space text-lg md:text-xl font-bold uppercase text-[#F5F3EE] group-hover:text-primary-accent transition-colors duration-300">
+                    <h3 className="font-space text-lg md:text-xl font-bold uppercase text-primary-text group-hover:text-primary-accent transition-colors">
                       {service.title}
                     </h3>
                     
-                    {/* Bento arrow action */}
-                    <div className="w-7 h-7 rounded-full border border-default-border flex items-center justify-center text-secondary-text group-hover:bg-primary-accent group-hover:border-primary-accent group-hover:text-[#080808] transition-all duration-300 transform group-hover:rotate-45">
-                      <ArrowUpRight size={12} />
+                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-secondary-text group-hover:bg-primary-accent group-hover:border-primary-accent group-hover:text-[#080808] transition-all duration-300 transform group-hover:rotate-45">
+                      <ArrowUpRight size={14} />
                     </div>
                   </div>
 
@@ -109,12 +102,13 @@ export default function ServicesPreview() {
         </div>
 
         {/* Action Button */}
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center pt-4">
           <Link
             to="/services"
-            className="font-mono text-xs tracking-widest text-[#F5F3EE] hover:text-primary-accent border-b border-[#F5F3EE] hover:border-primary-accent pb-1 transition-colors uppercase"
+            className="group inline-flex items-center gap-3 font-space text-xs md:text-sm font-bold tracking-widest text-primary-text hover:text-primary-accent px-6 py-3 rounded-full border border-white/10 hover:border-primary-accent/50 glass-card transition-all uppercase"
           >
-            DISCOVER ALL DETAILS [→]
+            <span>View All Service Breakdown</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
 
@@ -122,3 +116,4 @@ export default function ServicesPreview() {
     </section>
   );
 }
+

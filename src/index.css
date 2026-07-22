@@ -36,6 +36,7 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
   }
 
   /* Custom selection */
@@ -52,7 +53,7 @@
     background: #080808;
   }
   ::-webkit-scrollbar-thumb {
-    background: #292929;
+    background: #222225;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -82,7 +83,7 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Custom Animation Utilities & Keyframes */
+/* Custom Animation & Modern Minimal Utilities */
 @layer utilities {
   .text-mask {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -90,21 +91,25 @@ html.lenis body {
 
   .grid-lines {
     background-image: 
-      linear-gradient(to right, rgba(41, 41, 41, 0.4) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(41, 41, 41, 0.4) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: clamp(60px, 8vw, 100px) clamp(60px, 8vw, 100px);
   }
 
-  .perspective-1000 {
-    perspective: 1000px;
+  .glass-card {
+    background: rgba(18, 18, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .preserve-3d {
-    transform-style: preserve-3d;
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  .backface-hidden {
-    backface-visibility: hidden;
+  .glass-card-hover:hover {
+    border-color: rgba(255, 77, 36, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(255, 77, 36, 0.12);
+    transform: translateY(-3px);
   }
 }
 
@@ -171,3 +176,4 @@ html.lenis body {
     display: none !important;
   }
 }
+

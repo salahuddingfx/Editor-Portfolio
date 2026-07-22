@@ -4,26 +4,23 @@ import { siteConfig } from "../config/siteConfig";
 
 export default function StatisticsSection() {
   return (
-    <section className="w-full bg-[#111111] py-16 md:py-24 border-y border-default-border/60 relative">
+    <section className="w-full bg-[#080808] py-20 md:py-28 border-y border-white/5 relative">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16">
         
         {/* Statistics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {siteConfig.stats.map((stat, idx) => (
             <div 
               key={idx} 
-              className="flex flex-col gap-2 items-center text-center p-4 bg-secondary-bg hover:bg-elevated-surface border border-default-border/40 hover:border-primary-accent/20 transition-all duration-300 group"
+              className="glass-card glass-card-hover p-6 md:p-8 rounded-2xl flex flex-col gap-3 items-center text-center group"
             >
-              {/* Count display (Space Grotesk) */}
-              <div className="font-space text-4xl md:text-6xl font-bold text-primary-text group-hover:text-primary-accent transition-colors duration-300">
+              <div className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text group-hover:text-primary-accent transition-colors">
                 <AnimatedCounter value={stat.value} duration={1.5} />
               </div>
               
-              {/* Separator block */}
-              <div className="w-6 h-[1px] bg-default-border group-hover:w-12 group-hover:bg-primary-accent transition-all duration-300" />
+              <div className="w-8 h-[2px] bg-primary-accent/40 group-hover:w-12 group-hover:bg-primary-accent transition-all" />
               
-              {/* Label metadata (JetBrains Mono) */}
-              <span className="font-mono text-[9px] md:text-[10px] text-muted-text uppercase tracking-widest leading-relaxed">
+              <span className="font-mono text-xs text-muted-text uppercase tracking-wider">
                 {stat.label}
               </span>
             </div>
@@ -34,3 +31,4 @@ export default function StatisticsSection() {
     </section>
   );
 }
+
