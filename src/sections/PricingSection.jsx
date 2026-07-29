@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Package, Sparkles, Check, ArrowRight } from "lucide-react";
 import { siteConfig } from "../config/siteConfig";
 
 export default function PricingSection() {
@@ -45,7 +46,7 @@ export default function PricingSection() {
     <section className="section" id="pricing">
       <div className="section-head">
         <h2>
-          <span className="spark">✦</span> Pricing &amp; Packages
+          <Sparkles size={24} className="spark inline-block" /> Pricing &amp; Packages
         </h2>
       </div>
 
@@ -68,7 +69,7 @@ export default function PricingSection() {
               className="btn btn-book"
               onClick={() => handleBookTier(tier.name, tier.price)}
             >
-              Book Now →
+              Book Now <ArrowRight size={14} />
             </button>
           </div>
         ))}
@@ -76,7 +77,9 @@ export default function PricingSection() {
 
       <div className="custom-package">
         <div className="custom-head">
-          <h3>📦 Custom Package</h3>
+          <h3 className="flex items-center justify-center gap-2">
+            <Package size={22} className="inline-block text-[#0B0B0B]" /> Custom Package
+          </h3>
           <p>Mix &amp; match services and choose your duration</p>
         </div>
 
@@ -125,7 +128,7 @@ export default function PricingSection() {
         </div>
 
         <button className="btn-book" onClick={handleBookCustom}>
-          Book Custom Package →
+          Book Custom Package <ArrowRight size={14} />
         </button>
       </div>
     </section>
