@@ -9,7 +9,6 @@ export default function PageTransition({ children }) {
     return <>{children}</>;
   }
 
-  // Smooth liquid shutter wipe panel in signature brand orange
   const wipeVariants = {
     initial: {
       top: "100%",
@@ -17,7 +16,7 @@ export default function PageTransition({ children }) {
     animate: {
       top: ["100%", "0%", "0%", "-100%"],
       transition: {
-        duration: 0.9,
+        duration: 0.85,
         times: [0, 0.4, 0.6, 1],
         ease: [0.76, 0, 0.24, 1],
       }
@@ -25,19 +24,19 @@ export default function PageTransition({ children }) {
     exit: {
       top: ["100%", "0%"],
       transition: {
-        duration: 0.45,
+        duration: 0.4,
         ease: [0.76, 0, 0.24, 1],
       }
     }
   };
 
   const textVariants = {
-    initial: { opacity: 0, scale: 0.9 },
+    initial: { opacity: 0, scale: 0.95 },
     animate: {
       opacity: [0, 1, 1, 0],
-      scale: [0.9, 1, 1, 1.05],
+      scale: [0.95, 1, 1, 1.02],
       transition: {
-        duration: 0.9,
+        duration: 0.85,
         times: [0, 0.3, 0.7, 1],
         ease: "easeInOut"
       }
@@ -47,7 +46,7 @@ export default function PageTransition({ children }) {
   return (
     <>
       <motion.div
-        className="fixed left-0 right-0 h-screen w-full bg-[#0B0B0B] z-[9999] pointer-events-none flex flex-col items-center justify-center gap-4 select-none border-y-2 border-[#FF781E] shadow-[0_0_60px_rgba(255,120,30,0.3)]"
+        className="fixed left-0 right-0 h-screen w-full bg-[#0B0B0B] z-[9999] pointer-events-none flex flex-col items-center justify-center gap-4 select-none"
         initial="initial"
         animate="animate"
         exit="exit"
@@ -71,7 +70,7 @@ export default function PageTransition({ children }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.4, delay: 0.35 }}
+        transition={{ duration: 0.35, delay: 0.3 }}
       >
         {children}
       </motion.div>
