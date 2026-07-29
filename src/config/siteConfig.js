@@ -1,8 +1,9 @@
 export const siteConfig = {
   name: "Tasnimul Rahat",
-  title: "Tasnimul Rahat — Cinematic Editor & Motion Designer",
-  subtitle: "Cinematic Editor & Motion Designer",
-  description: "I transform raw footage into powerful visual stories that engage, inspire, and leave a lasting impact.",
+  brand: "EditHub Creations",
+  title: "Tasnimul Rahat — EditHub Creations | Cinematic Editor & Motion Designer",
+  subtitle: "Cinematic Editor & Motion Designer — EditHub Creations",
+  description: "I transform raw footage into high-retention visual stories that engage, inspire, and drive massive reach for creators and brands.",
   email: "tasnimulrahat@gmail.com",
   phone: "+880 1851-075537",
   whatsappNumber: "8801851075537",
@@ -11,19 +12,21 @@ export const siteConfig = {
   availableForWork: true,
   aboutVideoId: "0fzcFPkl_18",
   showreelUrl: "https://www.youtube.com/embed/0fzcFPkl_18",
+  driveFolderUrl: "https://drive.google.com/drive/folders/1DIpX4Xid-CYtNGUpGLotIbKvWe92fg_4",
   
   socials: {
     youtube: "https://youtube.com/c/tasnimulrahat",
     instagram: "https://instagram.com/tasnimulrahat",
     linkedin: "https://linkedin.com/in/tasnimulrahat",
     whatsapp: "https://wa.me/8801851075537",
+    drive: "https://drive.google.com/drive/folders/1DIpX4Xid-CYtNGUpGLotIbKvWe92fg_4"
   },
 
   stats: [
-    { value: "200+", label: "Projects Done" },
+    { value: "200+", label: "Projects Completed" },
     { value: "3+", label: "Years Experience" },
-    { value: "100%", label: "Client Focused" },
-    { value: "24/7", label: "Support Available" }
+    { value: "100%", label: "Client Satisfaction" },
+    { value: "24/7", label: "Dedicated Support" }
   ],
 
   portfolio: [
