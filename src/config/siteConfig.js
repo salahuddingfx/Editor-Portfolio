@@ -1,27 +1,27 @@
 export const siteConfig = {
-  name: "FILMERGUY",
-  title: "FILMERGUY — Cinematic Editor & Motion Designer",
+  name: "Tasnimul Rahat",
+  title: "Tasnimul Rahat — Cinematic Editor & Motion Designer",
   subtitle: "Cinematic Editor & Motion Designer",
   description: "I transform raw footage into powerful visual stories that engage, inspire, and leave a lasting impact.",
-  email: "contact@filmerguy.com",
-  phone: "+880 1822-391955",
-  whatsappNumber: "8801822391955",
-  whatsappUrl: "https://wa.me/8801822391955",
+  email: "tasnimulrahat@gmail.com",
+  phone: "+880 1851-075537",
+  whatsappNumber: "8801851075537",
+  whatsappUrl: "https://wa.me/8801851075537",
   location: "Dhaka, Bangladesh",
   availableForWork: true,
   aboutVideoId: "0fzcFPkl_18",
   showreelUrl: "https://www.youtube.com/embed/0fzcFPkl_18",
   
   socials: {
-    youtube: "https://youtube.com/@filmerguy?si=pNaafw_3ggkmCz3a",
-    instagram: "https://www.instagram.com/foysalmahmudnahid/",
-    facebook: "https://www.facebook.com/foysal.mahmud.nahid.2024",
-    whatsapp: "https://wa.me/8801822391955",
+    youtube: "https://youtube.com/c/tasnimulrahat",
+    instagram: "https://instagram.com/tasnimulrahat",
+    linkedin: "https://linkedin.com/in/tasnimulrahat",
+    whatsapp: "https://wa.me/8801851075537",
   },
 
   stats: [
     { value: "200+", label: "Projects Done" },
-    { value: "2+", label: "Years Experience" },
+    { value: "3+", label: "Years Experience" },
     { value: "100%", label: "Client Focused" },
     { value: "24/7", label: "Support Available" }
   ],

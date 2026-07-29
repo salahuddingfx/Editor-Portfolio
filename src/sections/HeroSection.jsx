@@ -121,9 +121,8 @@ export default function HeroSection() {
       {/* Layer 4: headline & intro content */}
       <div className="gh-content">
         <h1 className="gh-title">
-          <span className="gh-line gh-line-1"><span>Foysal</span></span>
-          <span className="gh-line gh-line-2"><span>Mahamud</span></span>
-          <span className="gh-line gh-line-3"><span>Nahid</span></span>
+          <span className="gh-line gh-line-1"><span>Tasnimul</span></span>
+          <span className="gh-line gh-line-2"><span>Rahat</span></span>
         </h1>
 
         <div className="gh-intro">

@@ -10,7 +10,7 @@ export default function AboutPreview({ onOpenModal }) {
         <div className="about-visual" onClick={() => onOpenModal(aboutVideoId)}>
           <img
             src={`https://i.ytimg.com/vi/${aboutVideoId}/hqdefault.jpg`}
-            alt="About Filmerguy video"
+            alt="About Tasnimul Rahat video"
             className="about-thumb"
           />
           <div className="about-glow"></div>
