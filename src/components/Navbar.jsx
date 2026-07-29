@@ -1,16 +1,39 @@
 import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { siteConfig } from "../config/siteConfig";
 
 export default function Navbar({ onPlayShowreel }) {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleNav = () => setIsOpen(!isOpen);
   const closeNav = () => setIsOpen(false);
 
+  const handleNavClick = (e, targetHash, pageRoute) => {
+    closeNav();
+    if (location.pathname === "/") {
+      const el = document.querySelector(targetHash);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+    if (pageRoute) {
+      e.preventDefault();
+      navigate(pageRoute);
+    }
+  };
+
   return (
     <header className={`nav-wrap ${isOpen ? "open" : ""}`}>
       <div className="nav">
-        <a href="#home" className="logo" onClick={closeNav}>
+        <Link
+          to="/"
+          className="logo"
+          onClick={(e) => handleNavClick(e,  "/")}
+        >
           <span className="logo-svg-mark">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 604.000000" preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,604.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
@@ -19,20 +42,55 @@ export default function Navbar({ onPlayShowreel }) {
             </svg>
           </span>
           {siteConfig.name}
-        </a>
+        </Link>
 
         <nav className="nav-links" aria-label="Primary">
-          <a href="#about" onClick={closeNav}>About</a>
-          <a href="#work" onClick={closeNav}>Work</a>
-          <a href="#pricing" onClick={closeNav}>Pricing</a>
-          <a href="#contact" onClick={closeNav}>Contact</a>
+          <a
+            href="about"
+            onClick={(e) => handleNavClick(e,  "/about")}
+          >
+            About
+          </a>
+          <a
+            href="/work"
+            onClick={(e) => handleNavClick(e, "/work")}
+          >
+            Work
+          </a>
+          <a
+            href="/services"
+            onClick={(e) => handleNavClick(e,  "/services")}
+          >
+            Services
+          </a>
+          <a
+            href="/pricing"
+            onClick={(e) => handleNavClick(e, "/services")}
+          >
+            Pricing
+          </a>
+          <a
+            href="/contact"
+            onClick={(e) => handleNavClick(e,  "/contact")}
+          >
+            Contact
+          </a>
         </nav>
 
         <div className="nav-right">
-          <a href="#contact" className="btn btn-accent btn-sm nav-cta" onClick={closeNav}>
+          <a
+            href="#contact"
+            className="btn btn-accent btn-sm nav-cta"
+            onClick={(e) => handleNavClick(e, "#contact", "/contact")}
+          >
             Let's talk
           </a>
-          <button className="nav-toggle" id="navToggle" onClick={toggleNav} aria-label="Toggle Navigation">
+          <button
+            className="nav-toggle"
+            id="navToggle"
+            onClick={toggleNav}
+            aria-label="Toggle Navigation"
+          >
             <span></span>
             <span></span>
             <span></span>
