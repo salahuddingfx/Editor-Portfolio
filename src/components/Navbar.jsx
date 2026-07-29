@@ -1,209 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Play } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import MagneticButton from "./MagneticButton";
+import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 
 export default function Navbar({ onPlayShowreel }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Transparent at top, dark after scrolling
-      if (currentScrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Lock scrolling when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMobileMenuOpen]);
-
-  // Close mobile menu on escape key
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Close menu when location route changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
-
-  const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "ABOUT", path: "/about" },
-    { name: "WORK", path: "/work" },
-    { name: "SERVICES", path: "/services" },
-    { name: "CONTACT", path: "/contact" }
-  ];
+  const toggleNav = () => setIsOpen(!isOpen);
+  const closeNav = () => setIsOpen(false);
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "bg-secondary-bg/90 backdrop-blur-md border-b border-default-border/50 py-3 md:py-4" 
-            : "bg-transparent py-5 md:py-8"
-        }`}
-      >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="font-space text-lg font-bold tracking-widest text-[#F5F3EE] hover:text-primary-accent transition-colors flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-primary-accent" />
-            RAHAT
-          </Link>
+    <header className={`nav-wrap ${isOpen ? "open" : ""}`}>
+      <div className="nav">
+        <a href="#home" className="logo" onClick={closeNav}>
+          <span className="logo-svg-mark">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 604.000000" preserveAspectRatio="xMidYMid meet">
+              <g transform="translate(0.000000,604.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                <path d="M2835 6027 c-65 -17 -89 -34 -155 -109 -30 -35 -116 -126 -191 -203 -74 -77 -241 -252 -370 -390 -306 -327 -691 -735 -903 -960 -94 -99 -197 -207 -228 -240 -31 -33 -112 -117 -180 -187 -108 -111 -190 -197 -400 -419 -164 -173 -317 -348 -349 -401 -74 -120 -78 -238 -12 -367 21 -40 54 -87 73 -104 19 -16 121 -114 226 -216 105 -102 251 -242 324 -311 171 -160 277 -258 475 -446 88 -82 320 -300 515 -484 195 -183 389 -366 430 -406 41 -39 129 -123 195 -185 66 -63 149 -143 185 -179 160 -159 382 -361 427 -387 44 -25 57 -28 143 -28 115 0 160 18 238 97 86 87 113 203 77 326 -15 49 -36 72 -308 341 -161 159 -314 306 -342 327 -60 45 -37 24 -232 214 -88 85 -242 234 -344 331 -101 97 -202 193 -224 215 -23 21 -52 62 -65 89 -21 43 -25 64 -25 145 0 82 4 100 24 135 35 58 98 114 161 144 74 35 191 37 264 3 46 -21 218 -175 452 -407 401 -397 1029 -980 1084 -1008 36 -18 62 -22 135 -22 128 0 175 25 291 153 49 53 134 144 189 202 94 99 309 329 369 395 45 49 297 316 351 371 27 28 81 85 119 125 39 41 144 151 236 244 91 94 192 201 225 239 33 38 72 81 86 95 100 101 171 218 190 314 13 61 4 132 -25 201 -8 20 -16 38 -16 41 -3 14 -99 110 -285 283 -115 108 -248 232 -295 277 -47 45 -119 113 -160 151 -41 38 -106 100 -145 137 -38 38 -88 79 -111 93 -58 34 -141 48 -219 35 -109 -17 -124 -27 -300 -216 -26 -27 -93 -97 -149 -155 -56 -58 -165 -172 -242 -255 -77 -82 -194 -206 -258 -275 -149 -158 -166 -186 -175 -291 -4 -44 -5 -82 -2 -84 2 -3 6 -17 7 -31 5 -42 43 -106 89 -151 56 -53 135 -83 219 -83 102 0 143 20 231 113 43 45 149 154 234 242 86 88 175 181 198 206 56 62 120 92 205 97 97 6 149 -15 230 -91 83 -80 101 -118 102 -222 1 -138 54 -75 -785 -940 -80 -82 -163 -169 -184 -193 -21 -23 -67 -57 -102 -74 -58 -28 -69 -30 -140 -26 -102 6 -133 23 -268 148 -400 371 -501 467 -687 655 -115 116 -218 228 -230 250 -29 53 -32 182 -5 236 19 39 298 351 458 514 54 55 120 123 146 151 26 27 104 108 173 180 69 71 204 215 301 319 97 105 220 235 273 290 103 107 126 150 126 240 0 86 -27 145 -96 213 -81 80 -128 102 -219 102 -85 0 -132 -12 -194 -50 -37 -23 -360 -352 -520 -529 -13 -14 -69 -73 -125 -131 -97 -100 -334 -351 -845 -895 -238 -253 -318 -338 -561 -591 -74 -77 -164 -171 -200 -208 -88 -92 -143 -120 -240 -120 -91 -1 -154 24 -218 87 -83 80 -114 183 -88 287 21 82 48 121 179 257 63 65 131 138 152 163 40 48 230 252 406 435 58 60 145 153 194 205 49 52 125 133 170 180 45 47 265 280 491 519 775 821 757 798 756 934 0 39 -3 85 -7 101 -16 76 -91 164 -173 206 -54 26 -158 34 -227 17z"/>
+              </g>
+            </svg>
+          </span>
+          {siteConfig.name}
+        </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`relative font-inter text-xs tracking-widest font-semibold py-1 transition-colors ${
-                    isActive ? "text-primary-text" : "text-secondary-text hover:text-primary-text"
-                  }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeIndicator"
-                      className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-primary-accent"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
+        <nav className="nav-links" aria-label="Primary">
+          <a href="#about" onClick={closeNav}>About</a>
+          <a href="#work" onClick={closeNav}>Work</a>
+          <a href="#pricing" onClick={closeNav}>Pricing</a>
+          <a href="#contact" onClick={closeNav}>Contact</a>
+        </nav>
 
-          {/* CTA Showreel & Menu Toggle */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:block">
-              <MagneticButton
-                onClick={onPlayShowreel}
-                data-cursor="play"
-                className="px-5 py-2 bg-primary-accent hover:bg-accent-hover text-[#080808] font-inter text-xs font-bold tracking-widest uppercase flex items-center gap-2 transition-colors duration-200"
-              >
-                <Play size={10} fill="currentColor" />
-                PLAY SHOWREEL
-              </MagneticButton>
-            </div>
-
-            {/* Mobile Burger Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2.5 text-primary-text hover:text-primary-accent transition-colors focus:outline-none flex items-center justify-center"
-              aria-label="Toggle Navigation Menu"
-            >
-              <div className="w-5 h-4 relative flex items-center justify-center">
-                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"
-                }`} />
-                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0 scale-x-0" : ""
-                }`} />
-                <span className={`absolute w-5 h-[1.5px] bg-current transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"
-                }`} />
-              </div>
-            </button>
-          </div>
+        <div className="nav-right">
+          <a href="#contact" className="btn btn-accent btn-sm nav-cta" onClick={closeNav}>
+            Let's talk
+          </a>
+          <button className="nav-toggle" id="navToggle" onClick={toggleNav} aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-      </header>
-
-      {/* Mobile Menu Backdrop */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#080808] flex flex-col justify-between p-6 md:p-12 select-none"
-          >
-            {/* Top gap for physical spacer */}
-            <div className="h-16" />
-
-            {/* Big list links */}
-            <nav className="flex flex-col gap-6 justify-center my-auto">
-              {navLinks.map((link, index) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <div key={link.name} className="overflow-hidden">
-                    <motion.div
-                      initial={{ y: "100%" }}
-                      animate={{ y: 0 }}
-                      exit={{ y: "100%" }}
-                      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.76, 0, 0.24, 1] }}
-                      className="flex items-baseline gap-4"
-                    >
-                      <span className="font-mono text-xs text-muted-text">0{index + 1}</span>
-                      <Link
-                        to={link.path}
-                        className={`font-space text-4xl md:text-7xl font-bold tracking-tight uppercase hover:text-primary-accent transition-colors ${
-                          isActive ? "text-primary-accent" : "text-[#F5F3EE]"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  </div>
-                );
-              })}
-            </nav>
-
-            {/* Bottom details */}
-            <div className="border-t border-default-border pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-              <div className="flex flex-col gap-1">
-                <span className="font-mono text-[9px] text-muted-text tracking-widest uppercase">HIRE ME</span>
-                <a href={`mailto:${siteConfig.email}`} className="font-inter text-sm text-[#F5F3EE] hover:text-primary-accent transition-colors">
-                  {siteConfig.email}
-                </a>
-              </div>
-              <div className="flex gap-5">
-                {Object.entries(siteConfig.socials).map(([name, url]) => (
-                  <a
-                    key={name}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-xs text-secondary-text hover:text-[#F5F3EE] uppercase transition-colors"
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      </div>
+    </header>
   );
 }

@@ -15,21 +15,18 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Developer = lazy(() => import("./pages/Developer"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-import CustomCursor from "./components/CustomCursor";
-import IntroLoader from "./components/IntroLoader";
 import VideoModal from "./components/VideoModal";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import { siteConfig } from "./config/siteConfig";
 
-// Premium loader fallback matching editing track theme
 function PageLoader() {
   return (
-    <div className="w-full min-h-[60vh] bg-[#080808] flex flex-col items-center justify-center gap-4 select-none">
-      <div className="w-8 h-8 border-2 border-primary-accent border-t-transparent rounded-full animate-spin" />
-      <span className="font-mono text-[10px] text-muted-text tracking-widest uppercase animate-pulse">
-        LOADING TRACK...
+    <div className="w-full min-h-[60vh] bg-[#FFFCFA] flex flex-col items-center justify-center gap-4 select-none">
+      <div className="w-8 h-8 border-2 border-[#FF781E] border-t-transparent rounded-full animate-spin" />
+      <span className="font-mono text-[10px] text-[#83837A] tracking-widest uppercase animate-pulse">
+        LOADING PORTFOLIO...
       </span>
     </div>
   );
@@ -37,12 +34,21 @@ function PageLoader() {
 
 function AppContent() {
   const location = useLocation();
-  const [isLoaderComplete, setIsLoaderComplete] = useState(false);
-  const [isShowreelOpen, setIsShowreelOpen] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (videoId) => {
+    setActiveVideoId(videoId || siteConfig.aboutVideoId);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setActiveVideoId(null);
+  };
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
-    // Only run on desktop layout and when reduced motion is disabled
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -63,7 +69,6 @@ function AppContent() {
 
     requestAnimationFrame(raf);
 
-    // Listen to custom route change event to reset Lenis position
     const handleScrollReset = () => {
       lenisInstance.scrollTo(0, { immediate: true });
     };
@@ -79,31 +84,19 @@ function AppContent() {
 
   return (
     <ErrorBoundary>
-      {/* Custom mouse dot follower */}
-      <CustomCursor />
-
-      {/* Floating scroll to top button */}
       <ScrollToTopButton />
-
-      {/* Shutter sequence loading bar */}
-      <IntroLoader onComplete={() => setIsLoaderComplete(true)} />
-
-      {/* Global Scroll watcher */}
       <ScrollToTop />
 
-      {/* Layout wrapper */}
-      <div 
-        className={`min-h-screen flex flex-col justify-between transition-opacity duration-700 ${
-          isLoaderComplete ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <Navbar onPlayShowreel={() => setIsShowreelOpen(true)} />
-        
-        {/* Route transition wrappers */}
+      <div className="min-h-screen flex flex-col justify-between">
+        <Navbar onPlayShowreel={() => handleOpenModal(siteConfig.aboutVideoId)} />
+
         <AnimatePresence mode="wait">
           <Suspense fallback={<PageLoader />}>
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home onPlayShowreel={() => setIsShowreelOpen(true)} />} />
+              <Route
+                path="/"
+                element={<Home onOpenModal={handleOpenModal} />}
+              />
               <Route path="/work" element={<Work />} />
               <Route path="/work/:slug" element={<ProjectDetails />} />
               <Route path="/services" element={<Services />} />
@@ -118,11 +111,10 @@ function AppContent() {
         <Footer />
       </div>
 
-      {/* Showreel frame popup */}
       <VideoModal
-        isOpen={isShowreelOpen}
-        onClose={() => setIsShowreelOpen(false)}
-        videoUrl={siteConfig.showreelUrl}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        videoId={activeVideoId}
       />
     </ErrorBoundary>
   );

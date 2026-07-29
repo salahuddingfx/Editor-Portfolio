@@ -1,83 +1,100 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { siteConfig } from "../config/siteConfig";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#080808] border-t border-default-border/60 py-8 md:py-10 relative overflow-hidden">
-      {/* Editorial Backdrop Accent Grid Line */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-default-border to-transparent" />
-
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-10 md:gap-12">
-        
-        {/* Footer Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-start">
-          
-          {/* Logo & Subtitle */}
-          <div className="md:col-span-6 flex flex-col gap-3">
-            <Link to="/" className="font-space text-xl font-bold tracking-widest text-[#F5F3EE] flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-primary-accent" />
-              RAHAT
-            </Link>
-            <p className="font-inter text-xs text-secondary-text tracking-widest uppercase max-w-xs leading-relaxed">
-              Video Editor &amp; Visual Designer
-            </p>
-            {siteConfig.availableForWork && (
-              <div className="flex items-center gap-2 mt-1">
-                <span className="w-2 h-2 rounded-full bg-status-success" />
-                <span className="font-mono text-[9px] text-secondary-text tracking-wider uppercase">AVAILABLE FOR SELECT PROJECTS</span>
-              </div>
-            )}
-          </div>
-
-          {/* Navigation links */}
-          <div className="md:col-span-3 flex flex-col gap-3">
-            <span className="font-mono text-[9px] text-muted-text tracking-widest uppercase">NAVIGATION</span>
-            <div className="flex flex-col gap-2">
-              <Link to="/about" className="font-inter text-xs tracking-wider font-semibold text-secondary-text hover:text-primary-accent transition-colors w-fit">ABOUT THE CREATOR</Link>
-              <Link to="/work" className="font-inter text-xs tracking-wider font-semibold text-secondary-text hover:text-primary-accent transition-colors w-fit">SELECTED WORK</Link>
-              <Link to="/services" className="font-inter text-xs tracking-wider font-semibold text-secondary-text hover:text-primary-accent transition-colors w-fit">CREATIVE SERVICES</Link>
-              <Link to="/contact" className="font-inter text-xs tracking-wider font-semibold text-secondary-text hover:text-primary-accent transition-colors w-fit">START A PROJECT</Link>
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="md:col-span-3 flex flex-col gap-3">
-            <span className="font-mono text-[9px] text-muted-text tracking-widest uppercase">SOCIAL PLUGS</span>
-            <div className="flex flex-col gap-2">
-              {Object.entries(siteConfig.socials).map(([name, url]) => (
-                <a
-                  key={name}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-inter text-xs tracking-wider font-semibold text-secondary-text hover:text-primary-accent uppercase transition-colors w-fit"
-                >
-                  {name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
-        {/* Footer Bottom Metadata */}
-        <div className="border-t border-default-border/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-          <p className="font-mono text-[10px] text-muted-text">
-            © {new Date().getFullYear()} TASNIMUL RAHAT. ALL RIGHTS RESERVED.
+    <footer className="footer" id="contact">
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <a href="#home" className="logo">
+            <span className="logo-svg-mark">
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 604.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,604.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                  <path d="M2835 6027 c-65 -17 -89 -34 -155 -109 -30 -35 -116 -126 -191 -203 -74 -77 -241 -252 -370 -390 -306 -327 -691 -735 -903 -960 -94 -99 -197 -207 -228 -240 -31 -33 -112 -117 -180 -187 -108 -111 -190 -197 -400 -419 -164 -173 -317 -348 -349 -401 -74 -120 -78 -238 -12 -367 21 -40 54 -87 73 -104 19 -16 121 -114 226 -216 105 -102 251 -242 324 -311 171 -160 277 -258 475 -446 88 -82 320 -300 515 -484 195 -183 389 -366 430 -406 41 -39 129 -123 195 -185 66 -63 149 -143 185 -179 160 -159 382 -361 427 -387 44 -25 57 -28 143 -28 115 0 160 18 238 97 86 87 113 203 77 326 -15 49 -36 72 -308 341 -161 159 -314 306 -342 327 -60 45 -37 24 -232 214 -88 85 -242 234 -344 331 -101 97 -202 193 -224 215 -23 21 -52 62 -65 89 -21 43 -25 64 -25 145 0 82 4 100 24 135 35 58 98 114 161 144 74 35 191 37 264 3 46 -21 218 -175 452 -407 401 -397 1029 -980 1084 -1008 36 -18 62 -22 135 -22 128 0 175 25 291 153 49 53 134 144 189 202 94 99 309 329 369 395 45 49 297 316 351 371 27 28 81 85 119 125 39 41 144 151 236 244 91 94 192 201 225 239 33 38 72 81 86 95 100 101 171 218 190 314 13 61 4 132 -25 201 -8 20 -16 38 -16 41 -3 14 -99 110 -285 283 -115 108 -248 232 -295 277 -47 45 -119 113 -160 151 -41 38 -106 100 -145 137 -38 38 -88 79 -111 93 -58 34 -141 48 -219 35 -109 -17 -124 -27 -300 -216 -26 -27 -93 -97 -149 -155 -56 -58 -165 -172 -242 -255 -77 -82 -194 -206 -258 -275 -149 -158 -166 -186 -175 -291 -4 -44 -5 -82 -2 -84 2 -3 6 -17 7 -31 5 -42 43 -106 89 -151 56 -53 135 -83 219 -83 102 0 143 20 231 113 43 45 149 154 234 242 86 88 175 181 198 206 56 62 120 92 205 97 97 6 149 -15 230 -91 83 -80 101 -118 102 -222 1 -138 54 -75 -785 -940 -80 -82 -163 -169 -184 -193 -21 -23 -67 -57 -102 -74 -58 -28 -69 -30 -140 -26 -102 6 -133 23 -268 148 -400 371 -501 467 -687 655 -115 116 -218 228 -230 250 -29 53 -32 182 -5 236 19 39 298 351 458 514 54 55 120 123 146 151 26 27 104 108 173 180 69 71 204 215 301 319 97 105 220 235 273 290 103 107 126 150 126 240 0 86 -27 145 -96 213 -81 80 -128 102 -219 102 -85 0 -132 -12 -194 -50 -37 -23 -360 -352 -520 -529 -13 -14 -69 -73 -125 -131 -97 -100 -334 -351 -845 -895 -238 -253 -318 -338 -561 -591 -74 -77 -164 -171 -200 -208 -88 -92 -143 -120 -240 -120 -91 -1 -154 24 -218 87 -83 80 -114 183 -88 287 21 82 48 121 179 257 63 65 131 138 152 163 40 48 230 252 406 435 58 60 145 153 194 205 49 52 125 133 170 180 45 47 265 280 491 519 775 821 757 798 756 934 0 39 -3 85 -7 101 -16 76 -91 164 -173 206 -54 26 -158 34 -227 17z"/>
+                </g>
+              </svg>
+            </span>
+            {siteConfig.name}
+          </a>
+          <p>
+            Cinematic Editor &amp; Motion Designer.
+            <br />
+            Crafting emotions through visuals.
           </p>
-          <p className="font-mono text-[10px] text-muted-text tracking-wider uppercase">
-            Developed by{" "}
-            <Link to="/developer" className="text-secondary-text hover:text-primary-accent transition-colors font-semibold">
-              Salah Uddin Kader
-            </Link>{" "}
-            &amp;{" "}
-            <a href="https://nextorastudio.tech" target="_blank" rel="noopener noreferrer" className="text-secondary-text hover:text-primary-accent transition-colors font-semibold">
-              Nextora Studio
+          <div className="socials">
+            <a
+              href={siteConfig.socials.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z" />
+              </svg>
             </a>
-          </p>
+            <a
+              href={siteConfig.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65a2.75 2.75 0 0 0-.66-1.02 2.75 2.75 0 0 0-1.02-.66c-.31-.12-.78-.26-1.65-.3-1.05-.05-1.37-.06-4.04-.06Zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28Zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68Zm5.34-1.98a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z" />
+              </svg>
+            </a>
+            <a
+              href={siteConfig.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z" />
+              </svg>
+            </a>
+            <a
+              href={siteConfig.socials.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M17.47 14.38c-.29-.15-1.7-.84-1.96-.93-.26-.1-.46-.15-.65.14-.2.29-.75.93-.92 1.13-.17.19-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.14-.17.19-.29.29-.48.1-.2.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.24-.57-.48-.49-.65-.5h-.56c-.2 0-.5.07-.77.36-.26.29-1 .98-1 2.4 0 1.4 1.03 2.76 1.17 2.95.15.19 2.03 3.1 4.92 4.35.69.3 1.22.47 1.64.6.69.22 1.31.19 1.81.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.2-.55-.34ZM12.02 2C6.5 2 2 6.48 2 12c0 1.86.5 3.6 1.4 5.1L2 22l4.98-1.36A9.95 9.95 0 0 0 12.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2Zm0 18.13a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.84.82-3.02-.2-.31A8.13 8.13 0 1 1 12.02 20.13Z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
+        <div className="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#about">About Me</a>
+          <a href="#services">Services</a>
+          <a href="#work">Projects</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div className="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Video Editing</a>
+          <a href="#services">Motion Graphics</a>
+          <a href="#services">Color Grading</a>
+          <a href="#services">Thumbnail Design</a>
+          <a href="#services">YouTube Optimization</a>
+        </div>
+
+        <div className="footer-col">
+          <h4>Get In Touch</h4>
+          <a href={siteConfig.socials.whatsapp} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+          <a href="#work">View Portfolio</a>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        © 2026 {siteConfig.name}. All rights reserved.
       </div>
     </footer>
   );

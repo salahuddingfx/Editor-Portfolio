@@ -1,26 +1,24 @@
 import React from "react";
 import PageTransition from "../components/PageTransition";
 import HeroSection from "../sections/HeroSection";
-import CreativeMarquee from "../components/CreativeMarquee";
-import FeaturedProjects from "../sections/FeaturedProjects";
 import StatisticsSection from "../sections/StatisticsSection";
+import FeaturedProjects from "../sections/FeaturedProjects";
 import ServicesPreview from "../sections/ServicesPreview";
+import PricingSection from "../sections/PricingSection";
 import AboutPreview from "../sections/AboutPreview";
-import CreativeProcess from "../sections/CreativeProcess";
 import TestimonialsSection from "../sections/TestimonialsSection";
 import FinalCTA from "../sections/FinalCTA";
 
-export default function Home({ onPlayShowreel }) {
+export default function Home({ onOpenModal }) {
   return (
     <PageTransition>
       <div className="flex-grow flex flex-col">
-        <HeroSection onPlayShowreel={onPlayShowreel} />
-        <CreativeMarquee />
-        <FeaturedProjects />
+        <HeroSection />
         <StatisticsSection />
+        <FeaturedProjects onOpenModal={onOpenModal} />
         <ServicesPreview />
-        <AboutPreview />
-        <CreativeProcess />
+        <PricingSection />
+        <AboutPreview onOpenModal={onOpenModal} />
         <TestimonialsSection />
         <FinalCTA />
       </div>
