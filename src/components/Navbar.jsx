@@ -46,8 +46,8 @@ export default function Navbar({ onPlayShowreel }) {
 
         <nav className="nav-links" aria-label="Primary">
           <a
-            href="about"
-            onClick={(e) => handleNavClick(e,  "/about")}
+            href="/about"
+            onClick={(e) => handleNavClick(e, "/about")}
           >
             About
           </a>
