@@ -10,6 +10,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Work = lazy(() => import("./pages/Work"));
 const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
 const Services = lazy(() => import("./pages/Services"));
+const Pricing = lazy(() => import("./pages/Pricing"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Developer = lazy(() => import("./pages/Developer"));
@@ -47,7 +48,6 @@ function AppContent() {
     setActiveVideoId(null);
   };
 
-  // Initialize Lenis smooth scroll
   useEffect(() => {
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -100,6 +100,7 @@ function AppContent() {
               <Route path="/work" element={<Work />} />
               <Route path="/work/:slug" element={<ProjectDetails />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/pricing" element={<Pricing />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/developer" element={<Developer />} />

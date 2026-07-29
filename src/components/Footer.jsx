@@ -71,8 +71,9 @@ export default function Footer() {
           <Link to="/about">About Me</Link>
           <Link to="/services">Services</Link>
           <Link to="/work">Projects</Link>
-          <Link to="/services">Pricing</Link>
+          <Link to="/pricing">Pricing Tiers</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/developer" className="opacity-80 hover:opacity-100">Behind The Code ⚡</Link>
         </div>
 
         <div className="footer-col">
@@ -91,6 +92,7 @@ export default function Footer() {
           </a>
           <a href={`mailto:${siteConfig.email}`}>Direct Email</a>
           <Link to="/work">View Portfolio Archive</Link>
+          <Link to="/developer">Developer Details</Link>
         </div>
       </div>
 
