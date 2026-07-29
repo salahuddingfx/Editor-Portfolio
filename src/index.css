@@ -461,9 +461,59 @@ p {
   text-shadow: 0 1px 12px rgba(0,0,0,.3);
 }
 
-.gh-btn {
+.hero-top-badge {
+  position: absolute;
+  left: max(5.6vw, 2rem);
+  top: 18%;
   pointer-events: auto;
-  margin-top: 20px;
+  z-index: 12;
+}
+
+.hero-badge {
+  position: absolute;
+  top: 20%;
+  right: max(5.6vw, 2rem);
+  z-index: 12;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(255, 120, 30, 0.35);
+  pointer-events: auto;
+  transition: transform .3s ease;
+}
+
+.hero-badge:hover {
+  transform: scale(1.08) rotate(6deg);
+}
+
+.hero-badge-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.hero-badge-label {
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 2px;
+  letter-spacing: .05em;
+}
+
+.gh-btn-showreel {
+  pointer-events: auto;
+  background: rgba(11, 11, 11, 0.65);
+  backdrop-filter: blur(12px);
 }
 
 .gh-manifesto {

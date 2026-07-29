@@ -8,12 +8,15 @@ import PricingSection from "../sections/PricingSection";
 import AboutPreview from "../sections/AboutPreview";
 import TestimonialsSection from "../sections/TestimonialsSection";
 import FinalCTA from "../sections/FinalCTA";
+import { siteConfig } from "../config/siteConfig";
 
 export default function Home({ onOpenModal }) {
+  const showreelId = siteConfig.aboutVideoId || "0fzcFPkl_18";
+
   return (
     <PageTransition>
       <div className="flex-grow flex flex-col">
-        <HeroSection />
+        <HeroSection onPlayShowreel={() => onOpenModal(showreelId)} />
         <StatisticsSection />
         <FeaturedProjects onOpenModal={onOpenModal} />
         <ServicesPreview />
