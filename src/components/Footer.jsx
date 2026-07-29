@@ -73,16 +73,16 @@ export default function Footer() {
           <Link to="/work">Projects</Link>
           <Link to="/pricing">Pricing Tiers</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/developer" className="opacity-80 hover:opacity-100">Behind The Code ⚡</Link>
         </div>
 
         <div className="footer-col">
-          <h4>Services</h4>
-          <Link to="/services">Video Editing</Link>
-          <Link to="/services">Motion Graphics</Link>
-          <Link to="/services">Color Grading</Link>
-          <Link to="/services">Thumbnail Design</Link>
-          <Link to="/services">YouTube Optimization</Link>
+          <h4>Legal &amp; Policy</h4>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/terms">Terms of Service</Link>
+          <a href={siteConfig.driveFolderUrl} target="_blank" rel="noopener noreferrer">
+            Google Drive Portfolio 📂
+          </a>
+          <Link to="/developer" className="opacity-80 hover:opacity-100">Behind The Code ⚡</Link>
         </div>
 
         <div className="footer-col">
@@ -92,12 +92,16 @@ export default function Footer() {
           </a>
           <a href={`mailto:${siteConfig.email}`}>Direct Email</a>
           <Link to="/work">View Portfolio Archive</Link>
-          <Link to="/developer">Developer Details</Link>
         </div>
       </div>
 
-      <div className="footer-bottom">
-        © 2026 {siteConfig.name}. All rights reserved.
+      <div className="footer-bottom flex flex-col md:flex-row items-center justify-between gap-2">
+        <span>© 2026 {siteConfig.name} (EditHub Creations). All rights reserved.</span>
+        <div className="flex items-center gap-4 text-xs">
+          <Link to="/privacy" className="hover:underline">Privacy</Link>
+          <span>•</span>
+          <Link to="/terms" className="hover:underline">Terms</Link>
+        </div>
       </div>
     </footer>
   );

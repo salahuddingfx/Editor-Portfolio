@@ -14,6 +14,8 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Developer = lazy(() => import("./pages/Developer"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import VideoModal from "./components/VideoModal";
@@ -104,6 +106,8 @@ function AppContent() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/developer" element={<Developer />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
