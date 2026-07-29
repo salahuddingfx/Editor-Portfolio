@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Play, ArrowRight, Sparkles } from "lucide-react";
+import AnimatedCounter from "../components/AnimatedCounter";
 import { siteConfig } from "../config/siteConfig";
 
 export default function HeroSection({ onPlayShowreel }) {
@@ -151,7 +152,9 @@ export default function HeroSection({ onPlayShowreel }) {
         </div>
 
         <div className="hero-badge">
-          <div className="hero-badge-num">200+</div>
+          <div className="hero-badge-num">
+            <AnimatedCounter value="200+" duration={2} />
+          </div>
           <div className="hero-badge-label">PROJECTS DONE</div>
         </div>
 

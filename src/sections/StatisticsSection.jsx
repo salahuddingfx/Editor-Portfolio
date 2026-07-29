@@ -1,4 +1,5 @@
 import React from "react";
+import AnimatedCounter from "../components/AnimatedCounter";
 import { siteConfig } from "../config/siteConfig";
 
 export default function StatisticsSection() {
@@ -7,7 +8,9 @@ export default function StatisticsSection() {
       <div className="stats-inner">
         {siteConfig.stats.map((stat, idx) => (
           <div className="stat" key={idx}>
-            <span className="stat-num">{stat.value}</span>
+            <span className="stat-num">
+              <AnimatedCounter value={stat.value} duration={2} />
+            </span>
             <span className="stat-label">{stat.label}</span>
           </div>
         ))}

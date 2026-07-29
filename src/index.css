@@ -469,6 +469,12 @@ p {
   z-index: 12;
 }
 
+@media (max-width: 768px) {
+  .hero-top-badge {
+    display: none;
+  }
+}
+
 .hero-badge {
   position: absolute;
   top: 20%;
