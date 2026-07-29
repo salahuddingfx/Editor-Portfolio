@@ -10,20 +10,18 @@ export default function Navbar({ onPlayShowreel }) {
   const toggleNav = () => setIsOpen(!isOpen);
   const closeNav = () => setIsOpen(false);
 
-  const handleNavClick = (e, targetHash, pageRoute) => {
+  const handleNavClick = (e, targetRoute) => {
     closeNav();
-    if (location.pathname === "/") {
-      const el = document.querySelector(targetHash);
+    if (targetRoute.startsWith("#") && location.pathname === "/") {
+      const el = document.querySelector(targetRoute);
       if (el) {
         e.preventDefault();
         el.scrollIntoView({ behavior: "smooth" });
         return;
       }
     }
-    if (pageRoute) {
-      e.preventDefault();
-      navigate(pageRoute);
-    }
+    e.preventDefault();
+    navigate(targetRoute);
   };
 
   return (
@@ -32,7 +30,7 @@ export default function Navbar({ onPlayShowreel }) {
         <Link
           to="/"
           className="logo"
-          onClick={(e) => handleNavClick(e,  "/")}
+          onClick={(e) => handleNavClick(e, "/")}
         >
           <span className="logo-svg-mark">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.000000 604.000000" preserveAspectRatio="xMidYMid meet">
@@ -44,7 +42,7 @@ export default function Navbar({ onPlayShowreel }) {
           {siteConfig.name}
         </Link>
 
-        <nav className="nav-links" aria-label="Primary">
+        <nav className="nav-links">
           <a
             href="/about"
             onClick={(e) => handleNavClick(e, "/about")}
@@ -59,19 +57,19 @@ export default function Navbar({ onPlayShowreel }) {
           </a>
           <a
             href="/services"
-            onClick={(e) => handleNavClick(e,  "/services")}
+            onClick={(e) => handleNavClick(e, "/services")}
           >
             Services
           </a>
           <a
             href="/pricing"
-            onClick={(e) => handleNavClick(e, "/services")}
+            onClick={(e) => handleNavClick(e, "/pricing")}
           >
             Pricing
           </a>
           <a
             href="/contact"
-            onClick={(e) => handleNavClick(e,  "/contact")}
+            onClick={(e) => handleNavClick(e, "/contact")}
           >
             Contact
           </a>
@@ -79,9 +77,9 @@ export default function Navbar({ onPlayShowreel }) {
 
         <div className="nav-right">
           <a
-            href="#contact"
+            href="/contact"
             className="btn btn-accent btn-sm nav-cta"
-            onClick={(e) => handleNavClick(e, "#contact", "/contact")}
+            onClick={(e) => handleNavClick(e, "/contact")}
           >
             Let's talk
           </a>
