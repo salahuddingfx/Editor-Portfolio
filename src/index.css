@@ -365,6 +365,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.92;
+  filter: grayscale(85%) contrast(1.15) brightness(0.85);
   transform: scale(1.035);
   animation: gh-portrait-in 1.1s cubic-bezier(.16,1,.3,1) both;
 }
@@ -375,6 +376,7 @@ p {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  filter: saturate(150%) contrast(1.2) brightness(1.1);
   -webkit-mask-image: radial-gradient(circle at var(--reveal-x) var(--reveal-y), #000 0px, #000 calc(var(--reveal-radius) - 46px), transparent var(--reveal-radius));
   mask-image: radial-gradient(circle at var(--reveal-x) var(--reveal-y), #000 0px, #000 calc(var(--reveal-radius) - 46px), transparent var(--reveal-radius));
   -webkit-mask-repeat: no-repeat;
